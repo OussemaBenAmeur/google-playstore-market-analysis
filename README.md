@@ -42,7 +42,7 @@ google-playstore-market-analysis/
 
 2. **Install required dependencies**:
    ```bash
-   pip install pandas numpy matplotlib seaborn jupyter plotly
+   pip install pandas numpy matplotlib seaborn jupyter
    ```
    
    Or using a requirements file (if available):
@@ -103,12 +103,7 @@ The analysis is based on a Google Play Store dataset that typically includes:
 - **NumPy**: Numerical computations
 - **Matplotlib**: Static visualizations
 - **Seaborn**: Statistical data visualization
-- **Plotly** (optional): Interactive visualizations
 - **Jupyter Notebook**: Interactive development environment
-
-## 💡 Insights & Findings
-
-*Note: Specific insights will depend on the actual analysis performed in the notebook. This section can be updated with key findings after running the analysis.*
 
 ## 🎯 Use Cases
 
