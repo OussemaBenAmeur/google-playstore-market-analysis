@@ -44,11 +44,6 @@ google-playstore-market-analysis/
    ```bash
    pip install pandas numpy matplotlib seaborn jupyter
    ```
-   
-   Or using a requirements file (if available):
-   ```bash
-   pip install -r requirements.txt
-   ```
 
 3. **Launch Jupyter Notebook**:
    ```bash
