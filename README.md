@@ -1,111 +1,89 @@
-# Google Playstore Market Analysis
+# Google Play Store Market Analysis
 
-A comprehensive data analysis project exploring trends, patterns, and insights from the Google Play Store app marketplace. This project uses Python data analysis and visualization techniques to uncover valuable information about app categories, ratings, pricing, installations, and market dynamics.
+This repository contains my first data science project and my first academic semestrial project. The work studies the Google Play Store market using the Kaggle dataset [Google Play Store Apps](https://www.kaggle.com/datasets/gauthamp10/google-playstore-apps) by Gautham Prakash, which contains Google Play Store app data collected in June 2021 and covers 2.3M+ applications.
 
-## 📋 Overview
+The main purpose of the project is not just to visualize the dataset, but to build a complete analysis workflow around it:
 
-This repository contains a Jupyter Notebook-based analysis of the Google Play Store dataset, examining various aspects of the mobile app ecosystem to provide insights for developers, marketers, and data enthusiasts.
+- clean and standardize raw Play Store app data
+- engineer new features such as `Rating Confidence`, app age, update recency, seasonality, region, and a custom `Monetization Score`
+- explore how installs, pricing, app size, category, and release timing relate to app performance
+- use unsupervised learning to segment apps and detect unusual market behavior
 
-## 🔍 Analysis Features
+## Project Focus
 
-- **Category Analysis**: Distribution and performance metrics across different app categories
-- **Rating & Review Analysis**: User satisfaction trends and review patterns
-- **Pricing Insights**: Free vs paid apps, pricing strategies, and revenue indicators
-- **Installation Trends**: Download patterns and popularity metrics
-- **Market Trends**: Emerging categories and competitive landscape
-- **Data Visualization**: Interactive charts and graphs for better understanding
-- **Statistical Insights**: Correlation analysis between app features and success metrics
+The analysis is centered on understanding how app characteristics relate to market performance in the Play Store. In the notebooks, the project specifically looks at:
 
-## 📁 Repository Structure
+- category distribution and average installs by category
+- relationships between installs and rating confidence, size, price, age, and update frequency
+- free vs paid app behavior
+- regional and seasonal patterns derived from the dataset
+- feature correlations across the engineered dataset
+- K-means clustering after PCA for app segmentation
+- Isolation Forest for outlier detection
 
-```
+This means the project is part exploratory data analysis, part feature engineering exercise, and part introductory machine learning project.
+
+## Project Layout
+
+```text
 google-playstore-market-analysis/
-├── Google_Playstore_Market_Analysis.ipynb    # Main analysis notebook
-└── README.md                                  # Project documentation
+├── data/
+│   ├── processed/
+│   └── raw/
+├── notebooks/
+│   ├── 00_helpers.ipynb
+│   ├── 01_data_preparation.ipynb
+│   ├── 02_exploratory_analysis.ipynb
+│   └── 03_unsupervised_segmentation.ipynb
+├── Google_Playstore_Market_Analysis.ipynb
+└── README.md
 ```
 
-## 🚀 Getting Started
+`Google_Playstore_Market_Analysis.ipynb` is the original notebook. The `notebooks/` directory contains a cleaner modular version of the same project flow.
 
-### Prerequisites
+## Notebook Flow
 
-- Python 3.7 or higher
-- Jupyter Notebook or JupyterLab
-- Required Python libraries (see Installation)
+1. [01_data_preparation.ipynb](/home/oussema/Desktop/github/google-playstore-market-analysis/notebooks/01_data_preparation.ipynb)  
+   Loads the raw dataset, removes unnecessary fields, cleans missing values, converts dates and sizes, and creates analysis-ready features.
 
-### Installation
+2. [02_exploratory_analysis.ipynb](/home/oussema/Desktop/github/google-playstore-market-analysis/notebooks/02_exploratory_analysis.ipynb)  
+   Covers the main EDA: category trends, install behavior, pricing patterns, regional and seasonal views, and correlation analysis.
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/OussemaBenAmeur/google-playstore-market-analysis.git
-   cd google-playstore-market-analysis
-   ```
+3. [03_unsupervised_segmentation.ipynb](/home/oussema/Desktop/github/google-playstore-market-analysis/notebooks/03_unsupervised_segmentation.ipynb)  
+   Applies PCA, K-means clustering, and Isolation Forest to group apps and flag outliers.
 
-2. **Install required dependencies**:
-   ```bash
-   pip install pandas numpy matplotlib seaborn jupyter
-   ```
+[00_helpers.ipynb](/home/oussema/Desktop/github/google-playstore-market-analysis/notebooks/00_helpers.ipynb) contains the shared setup and reusable cleaning logic.
 
-3. **Launch Jupyter Notebook**:
-   ```bash
-   jupyter notebook
-   ```
+## Dataset
 
-4. **Open and run the analysis**:
-   - Navigate to `Google_Playstore_Market_Analysis.ipynb`
-   - Execute cells sequentially to view the analysis
+Dataset source: [Kaggle - Google Play Store Apps](https://www.kaggle.com/datasets/gauthamp10/google-playstore-apps)
 
-## 📊 Dataset Information
+Relevant dataset details from the Kaggle page:
 
-The analysis is based on a Google Play Store dataset that typically includes:
+- title: `Google Play Store Apps`
+- scale: `2.3 Million+ App Data`
+- collection method: scraped with Python/Scrapy
+- collection period: June 2021
 
-- **App Information**: Name, category, rating, reviews
-- **Metadata**: Size, installs, content rating, last updated
-- **Business**: Price, type (free/paid), in-app purchases
-- **Technical**: Android version, current version, genre
+Place the raw CSV in one of these locations:
 
-**Data Source**: The dataset is commonly available on [Kaggle - Google Play Store Apps](https://www.kaggle.com/datasets/gauthamp10/google-playstore-apps)
-## 🔬 Key Analysis Areas
+- `data/raw/Google-Playstore.csv`
+- project root as `Google-Playstore.csv`
+- Kaggle path `/kaggle/input/google-playstore-apps/Google-Playstore.csv`
 
-### 1. App Categories Distribution
-- Most popular categories
-- Category-wise app counts
-- Market saturation analysis
+The modular notebooks search these paths automatically.
 
-### 2. Ratings & Reviews
-- Average ratings by category
-- Review volume analysis
-- Rating distribution patterns
+## Recommended Run Order
 
-### 3. Pricing Strategy
-- Free vs Paid apps comparison
-- Price distribution analysis
-- Revenue potential insights
+1. Run [01_data_preparation.ipynb](/home/oussema/Desktop/github/google-playstore-market-analysis/notebooks/01_data_preparation.ipynb)
+2. Confirm that `data/processed/google_playstore_cleaned.csv` was created
+3. Run [02_exploratory_analysis.ipynb](/home/oussema/Desktop/github/google-playstore-market-analysis/notebooks/02_exploratory_analysis.ipynb)
+4. Run [03_unsupervised_segmentation.ipynb](/home/oussema/Desktop/github/google-playstore-market-analysis/notebooks/03_unsupervised_segmentation.ipynb)
 
-### 4. Installation Metrics
-- Most downloaded apps
-- Installation trends by category
-- Popularity indicators
+## Environment
 
-### 5. Market Insights
-- Emerging app categories
-- Competitive landscape
-- Success factors analysis
+Recommended stack:
 
-## 📈 Technologies & Libraries Used
-
-- **Python**: Core programming language
-- **Pandas**: Data manipulation and analysis
-- **NumPy**: Numerical computations
-- **Matplotlib**: Static visualizations
-- **Seaborn**: Statistical data visualization
-- **Jupyter Notebook**: Interactive development environment
-
-## 🎯 Use Cases
-
-This analysis can be valuable for:
-
-- **App Developers**: Understanding market trends and competition
-- **Marketers**: Identifying opportunities and target audiences
-- **Investors**: Evaluating market potential and opportunities
-- **Students/Researchers**: Learning data analysis techniques
-- **Business Analysts**: Market research and strategic planning
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn notebook
+```
